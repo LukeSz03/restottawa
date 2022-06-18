@@ -1,0 +1,11 @@
+1. Home page with get started button
+2. Asks what type of food they want: restaurants vs fast food
+    - Restaurants:
+        - Dine in vs Takeout
+        - Cuisine
+        - Price point
+        - Reviews
+        - Location
+    - Fast food:
+        - Reviews
+        - Location

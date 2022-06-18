@@ -1,0 +1,3 @@
+black
+beautifulsoup4
+flask
