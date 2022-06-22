@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-
+import scraper
 
 app = Flask(__name__)
 
