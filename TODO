@@ -1,12 +1,8 @@
-1. Home page with get started button
-2. Asks what type of food they want: restaurants vs fast food
-    - Restaurants:
-        - Dine in vs Takeout
-        - Cuisine
-        - Price point
-        - Reviews
-        - Location
-    - Fast food:
-        - Reviews
-        - Location
-3. Give answer and allow them to export data
+- Add grids with fast food icons (fast food) 
+- Dine in vs Takeout button (restaurant)
+- Cuisine (restaurant)
+- Price point: $, $$ or $$$ (restaurant)
+- Reviews: 1,2,3,4, or 5 stars (restaurant)
+
+
+SORT RESTAURANTS FROM CLOSEST TO FURTHEST (TOP TO BOTTOM)

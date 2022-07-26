@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-
+import scraper
 
 app = Flask(__name__)
 
@@ -22,6 +22,11 @@ def rest():
 @app.route("/fast_food")
 def fast_food():
     return render_template("fast_food.html")
+
+
+@app.route("/reviews")
+def reviews():
+    return render_template("reviews.html")
 
 
 if __name__ == "__main__":
