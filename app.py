@@ -1,7 +1,16 @@
-from flask import Flask, render_template
+from ast import Sub
+from flask import Flask, render_template, redirect, url_for
+from flask_wtf import FlaskForm
+from wtforms import SubmitField
 import scraper
 
 app = Flask(__name__)
+app.secret_key = "asdasd"
+
+# Forms
+class TypeForm(FlaskForm):
+    restaurant = SubmitField()
+    fast_food = SubmitField()
 
 
 @app.route("/")
@@ -9,9 +18,17 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/type")
+@app.route("/type", methods=["GET", "POST"])
 def type():
-    return render_template("type.html")
+    form = TypeForm()
+
+    if form.validate_on_submit():
+        if form.restaurant.data:
+            return redirect(url_for("rest"))
+        elif form.fast_food.data:
+            return redirect(url_for("fast_food"))
+
+    return render_template("type.html", form=form)
 
 
 @app.route("/restaurant")
