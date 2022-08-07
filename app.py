@@ -29,5 +29,10 @@ def reviews():
     return render_template("reviews.html")
 
 
+@app.route("/cost")
+def cost():
+    return render_template("cost.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
