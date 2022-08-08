@@ -41,7 +41,7 @@ def fast_food():
 
     if form.validate_on_submit():
         if form.mcdonalds.data:
-            search("McDonalds")
+            search("McDonald's")
         elif form.wendys.data:
             search("Wendy's")
         elif form.harveys.data:

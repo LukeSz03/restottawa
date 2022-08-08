@@ -1,5 +1,4 @@
 black
-googlemaps
 flask
 python-dotenv
 flask-wtf

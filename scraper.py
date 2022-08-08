@@ -1,14 +1,28 @@
-from dataclasses import dataclass
-from xml.dom.pulldom import SAX2DOM
+import requests
+import os
 
-
-import googlemaps
 from dotenv import load_dotenv
 
 load_dotenv()
 
-gmaps = googlemaps.Client(key="API_KEY")
+
+def info_sort(info):
+    # CLEAN INFORMATION
+    print(info.text)
 
 
-def search(restaurant):
-    print("searching " + restaurant)
+def search(name):
+    url = (
+        "https://maps.googleapis.com/maps/api/place/textsearch/json?query="
+        + name
+        + "restaurants"
+        + "&key="
+        + os.environ.get("API_KEY")
+    )
+
+    payload = {}
+    headers = {}
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+
+    info_sort(response)
