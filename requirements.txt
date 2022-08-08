@@ -1,4 +1,5 @@
 black
-beautifulsoup4
+googlemaps
 flask
+python-dotenv
 flask-wtf
