@@ -1,16 +1,9 @@
-from ast import Sub
 from flask import Flask, render_template, redirect, url_for
-from flask_wtf import FlaskForm
-from wtforms import SubmitField
-import scraper
+from forms import TypeForm, FastFoodForm, RestaurantForm
+from scraper import search
 
 app = Flask(__name__)
-app.secret_key = "asdasd"
-
-# Forms
-class TypeForm(FlaskForm):
-    restaurant = SubmitField()
-    fast_food = SubmitField()
+app.secret_key = "secret_key"
 
 
 @app.route("/")
@@ -31,24 +24,34 @@ def type():
     return render_template("type.html", form=form)
 
 
-@app.route("/restaurant")
+@app.route("/restaurant", methods=["GET", "POST"])
 def rest():
-    return render_template("restaurant.html")
+    form = RestaurantForm()
+
+    if form.validate_on_submit():
+        print("ye")
+
+    return render_template("restaurant.html", form=form)
 
 
-@app.route("/fast_food")
+@app.route("/fast_food", methods=["GET", "POST"])
 def fast_food():
-    return render_template("fast_food.html")
 
+    form = FastFoodForm()
 
-@app.route("/reviews")
-def reviews():
-    return render_template("reviews.html")
+    if form.validate_on_submit():
+        if form.mcdonalds.data:
+            search("McDonalds")
+        elif form.wendys.data:
+            search("Wendy's")
+        elif form.harveys.data:
+            search("Harvey's")
+        elif form.burger_king.data:
+            search("Burger King")
+        elif form.aw.data:
+            search("A&W")
 
-
-@app.route("/cost")
-def cost():
-    return render_template("cost.html")
+    return render_template("fast_food.html", form=form)
 
 
 if __name__ == "__main__":
