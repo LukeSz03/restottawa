@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from forms import TypeForm, FastFoodForm, RestaurantForm
-from scraper import search
+from search_api import search
 
 app = Flask(__name__)
 app.secret_key = "secret_key"
@@ -30,31 +30,31 @@ def rest():
 
     if form.validate_on_submit():
         if form.chinese.data:
-            search("chinese restaurants")
+            search("chineserestaurants")
         elif form.french.data:
-            search("french restaurants")
+            search("frenchrestaurants")
         elif form.hamburger.data:
-            search("hamburger restaurants")
+            search("hamburgerrestaurants")
         elif form.indian.data:
-            search("indian restaurants")
+            search("indianrestaurants")
         elif form.italian.data:
-            search("italian restaurants")
+            search("italianrestaurants")
         elif form.japanese.data:
-            search("japanese restaurants")
+            search("japaneserestaurants")
         elif form.mexican.data:
-            search("mexican restaurants")
+            search("mexicanrestaurants")
         elif form.middle_eastern.data:
-            search("middle eastern restaurants")
+            search("middleeasternrestaurants")
         elif form.pizza.data:
-            search("pizza restaurants")
+            search("pizzarestaurants")
         elif form.seafood.data:
-            search("seafood restaurants")
+            search("seafoodrestaurants")
         elif form.sushi.data:
-            search("sushi restaurants")
+            search("sushirestaurants")
         elif form.thai.data:
-            search("thair restaurants")
+            search("thairestaurants")
         elif form.vietnamese.data:
-            search("vietnamese restaurants")
+            search("vietnameserestaurants")
 
         return redirect(url_for("results"))
 

@@ -1,16 +1,10 @@
 import requests
 import os
+import json
 
 from dotenv import load_dotenv
 
 load_dotenv()
-
-
-def info_sort(results):
-    # CLEAN INFORMATION
-    print(results.text)
-    # for item in results:
-    #     item.text
 
 
 def search(name):
@@ -26,4 +20,8 @@ def search(name):
 
     response = requests.request("GET", url, headers=headers, data=payload)
 
-    info_sort(response)
+    info = response.text
+    print(info)
+
+
+search("mexicanrestaurants")
