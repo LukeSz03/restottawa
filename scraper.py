@@ -6,9 +6,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def info_sort(info):
+def info_sort(results):
     # CLEAN INFORMATION
-    print(info.text)
+    print(results.text)
+    # for item in results:
+    #     item.text
 
 
 def search(name):
