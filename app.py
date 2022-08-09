@@ -29,7 +29,32 @@ def rest():
     form = RestaurantForm()
 
     if form.validate_on_submit():
-        print("ye")
+        if form.chinese.data:
+            search("chinese restaurants")
+        elif form.french.data:
+            search("french restaurants")
+        elif form.hamburger.data:
+            search("hamburger restaurants")
+        elif form.indian.data:
+            search("indian restaurants")
+        elif form.italian.data:
+            search("italian restaurants")
+        elif form.japanese.data:
+            search("japanese restaurants")
+        elif form.mexican.data:
+            search("mexican restaurants")
+        elif form.middle_eastern.data:
+            search("middle eastern restaurants")
+        elif form.pizza.data:
+            search("pizza restaurants")
+        elif form.seafood.data:
+            search("seafood restaurants")
+        elif form.sushi.data:
+            search("sushi restaurants")
+        elif form.thai.data:
+            search("thair restaurants")
+        elif form.vietnamese.data:
+            search("vietnamese restaurants")
 
     return render_template("restaurant.html", form=form)
 
