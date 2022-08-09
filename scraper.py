@@ -15,7 +15,6 @@ def search(name):
     url = (
         "https://maps.googleapis.com/maps/api/place/textsearch/json?query="
         + name
-        + "restaurants"
         + "&key="
         + os.environ.get("API_KEY")
     )

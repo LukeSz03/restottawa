@@ -56,6 +56,8 @@ def rest():
         elif form.vietnamese.data:
             search("vietnamese restaurants")
 
+        return redirect(url_for("result"))
+
     return render_template("restaurant.html", form=form)
 
 
@@ -77,6 +79,11 @@ def fast_food():
             search("A&W")
 
     return render_template("fast_food.html", form=form)
+
+
+@app.route("/result")
+def result():
+    return render_template("result.html")
 
 
 if __name__ == "__main__":
