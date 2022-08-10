@@ -20,10 +20,8 @@ def clean_results(response):
 
     # delete all keys in every element except the key "name"
     for i in restaurants:
-        for k in list(i):
-            if k != "name" and k != "rating":
-                del i[k]
-        print(i)
+        restaurant = {"name": i["name"], "rating": i["rating"]}
+        print(restaurant)
 
 
 def search(name):
