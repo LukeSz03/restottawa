@@ -36,3 +36,34 @@
     padding: 10px 20px;
     border-radius: 25px;
 }
+
+.listing {
+    list-style: none;
+    margin: 2em;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.listing li {
+    border: 1px solid hwb(208 5% 21%);
+    background-color: hwb(208 5% 21%);
+    border-radius: 5px;
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+
+
+.listing .body {
+    padding: 10px;
+    background-color: black;
+}
+
+#header {
+    position: fixed;
+}
+
+#content {
+    margin-top: 100px;
+}
