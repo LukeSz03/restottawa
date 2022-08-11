@@ -60,7 +60,7 @@ def clean_results(response):
 
         collection_rest.append(restaurant)
 
-    print(collection_rest)
+    return collection_rest
 
 
 def search(name):
@@ -76,7 +76,6 @@ def search(name):
 
     response = requests.request("GET", url, headers=headers, data=payload)
 
-    clean_results(response)
+    search_results = clean_results(response)
 
-
-search("frenchrestaurants")
+    return search_results

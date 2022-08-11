@@ -37,24 +37,6 @@
     border-radius: 25px;
 }
 
-.tile {
-    margin: 2em;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-}
 
-.tile li {
-    background-color: rgb(45, 179, 246);
-    color: white;
-    border-radius: 20px;
-    display: flex;
-    width: 350px;
-    flex-direction: column;
-}
-
-.tile .body {
-    padding: 20px;
-}
 
 

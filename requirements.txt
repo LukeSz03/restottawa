@@ -2,3 +2,4 @@ black
 flask
 python-dotenv
 flask-wtf
+requests

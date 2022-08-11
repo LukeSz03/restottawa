@@ -1,17 +1,27 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>20 nearby restaurants</h1><br><br>
-
-<div class="container">
-    <ul class="tile">
-        <li>
-            <h2>{ name }</h2>
-            <div class="body">
-                <p>The content of this listing item goes here.</p>
-            </div>
-        </li>
-    </ul>
+<div class="container-fluid">
+    <h1>Restaurants found</h1>
+    <div class="row">
+        {% for i in restaurants %}
+        <div class="col">
+                {% if i["business_status"] == "OPERATIONAL" and i["opening_hours"]["open_now"] != "N/A" and i["opening_hours"]["open_now"] != false %}
+                <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i["name"] }}</h5>
+                            <a href="#" class="card-link">{{ i["formatted_address"] }}</a>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Pricepoint:</strong> {{ i["price_level"] }}</li>
+                            <li class="list-group-item"><strong>Rating:</strong> {{ i["rating"] }} ⭐ | {{ i["user_ratings_total"] }} reviews</li>
+                        </ul>
+                </div><br>
+                {% endif %}
+        </div>
+        {% endfor %}
+    </div>   
 </div>
-
 {% endblock %}
+
+

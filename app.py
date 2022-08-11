@@ -68,7 +68,8 @@ def fast_food():
 
     if form.validate_on_submit():
         if form.mcdonalds.data:
-            search("McDonald's")
+            restaurants = search("McDonald's")
+            return render_template("results.html", restaurants=restaurants)
         elif form.wendys.data:
             search("Wendy's")
         elif form.harveys.data:
@@ -81,7 +82,7 @@ def fast_food():
     return render_template("fast_food.html", form=form)
 
 
-@app.route("/results")
+@app.route("/results", methods=["GET", "POST"])
 def results():
     return render_template("results.html")
 
