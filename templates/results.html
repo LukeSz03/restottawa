@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1 style="text-align: center">Restaurants found</h1>
+<h1 style="text-align: center">Restaurants currently <span style="color: rgb(99, 229, 99)">opened</span></h1>
 <div class="container">
     <table class="table table-borderless">
         <tbody>
@@ -9,11 +9,11 @@
                 {% for restaurant in restaurants | batch(5, '&nbsp;') %}
                 <td>
                     {% for i in restaurant %}    
-                        {% if i["business_status"] == "OPERATIONAL" and i["opening_hours"]["open_now"] != "N/A" and i["opening_hours"]["open_now"] != false %}
+                        {% if (i["business_status"] == "OPERATIONAL") and (i["opening_hours"] == true) %}
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ i["name"] }}</h5>
-                                    <a href="https://www.google.com/maps/place/{{ i['formatted_address'] }}" class="card-link">{{ i["formatted_address"] }}</a>
+                                    <a href="https://www.google.com/maps/search/{{ i['name'] }}" class="card-link">{{ i["formatted_address"] }}</a>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item"><strong>Pricepoint:</strong> {{ i["price_level"] }}</li>

@@ -30,33 +30,33 @@ def rest():
 
     if form.validate_on_submit():
         if form.chinese.data:
-            search("chineserestaurants")
+            restaurants = search("chineserestaurants")
         elif form.french.data:
-            search("frenchrestaurants")
+            restaurants = search("frenchrestaurants")
         elif form.hamburger.data:
-            search("hamburgerrestaurants")
+            restaurants = search("hamburgerrestaurants")
         elif form.indian.data:
-            search("indianrestaurants")
+            restaurants = search("indianrestaurants")
+            print(restaurants)
         elif form.italian.data:
-            search("italianrestaurants")
+            restaurants = search("italianrestaurants")
         elif form.japanese.data:
-            search("japaneserestaurants")
+            restaurants = search("japaneserestaurants")
         elif form.mexican.data:
-            search("mexicanrestaurants")
+            restaurants = search("mexicanrestaurants")
         elif form.middle_eastern.data:
-            search("middleeasternrestaurants")
+            restaurants = search("middleeasternrestaurants")
         elif form.pizza.data:
-            search("pizzarestaurants")
+            restaurants = search("pizzarestaurants")
         elif form.seafood.data:
-            search("seafoodrestaurants")
+            restaurants = search("seafoodrestaurants")
         elif form.sushi.data:
-            search("sushirestaurants")
+            restaurants = search("sushirestaurants")
         elif form.thai.data:
-            search("thairestaurants")
+            restaurants = search("thairestaurants")
         elif form.vietnamese.data:
-            search("vietnameserestaurants")
-
-        return redirect(url_for("results"))
+            restaurants = search("vietnameserestaurants")
+        return render_template("results.html", restaurants=restaurants)
 
     return render_template("restaurant.html", form=form)
 
@@ -69,22 +69,17 @@ def fast_food():
     if form.validate_on_submit():
         if form.mcdonalds.data:
             restaurants = search("McDonald's")
-            return render_template("results.html", restaurants=restaurants)
         elif form.wendys.data:
-            search("Wendy's")
+            restaurants = search("Wendy's")
         elif form.harveys.data:
-            search("Harvey's")
+            restaurants = search("Harvey's")
         elif form.burger_king.data:
-            search("Burger King")
+            restaurants = search("Burger King")
         elif form.aw.data:
-            search("A&W")
+            restaurants = search("AWCanada")
+        return render_template("results.html", restaurants=restaurants)
 
     return render_template("fast_food.html", form=form)
-
-
-@app.route("/results", methods=["GET", "POST"])
-def results():
-    return render_template("results.html")
 
 
 if __name__ == "__main__":

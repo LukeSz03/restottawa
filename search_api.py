@@ -5,15 +5,19 @@ import json
 
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 
 def validate_keys(key, dictionary):
-    if key == "opening_hours" and key not in dictionary:
-        dictionary[key] = {"open_now": "N/A"}
-    else:
+    if key == "opening_hours":
         if key not in dictionary:
-            dictionary[key] = "N/A"
+            dictionary[key] = {"open_now": "N/A"}
+        elif dictionary[key] == {}:
+            dictionary[key] = {"open_now": "N/A"}
+
+    if key not in dictionary:
+        dictionary[key] = "N/A"
 
 
 def convert_price_level(dictionary):
@@ -41,10 +45,11 @@ def clean_results(response):
     collection_rest = []
     for i in restaurants:
 
+        validate_keys("business_status", i)
+        validate_keys("opening_hours", i)
         validate_keys("price_level", i)
         validate_keys("rating", i)
         validate_keys("user_ratings_total", i)
-        validate_keys("opening_hours", i)
 
         convert_price_level(i)
 
