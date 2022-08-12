@@ -37,6 +37,17 @@
     border-radius: 25px;
 }
 
+a:link {
+    color: white;
+    background-color: transparent;
+}
+
+a:visited {
+color: rgb(238, 164, 127);
+background-color: transparent;
+text-decoration: none;
+}
+
 
 
 
