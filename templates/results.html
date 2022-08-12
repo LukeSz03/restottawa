@@ -1,34 +1,37 @@
 {% extends "layout.html" %}
 
 {% block content %}
+{% set counter = [] %}
 <h1 style="text-align: center">Restaurants currently <span style="color: rgb(99, 229, 99)">opened</span></h1>
+<br>
 <div class="container">
     <table class="table table-borderless">
+
         <tbody>
-            <tr>
-                {% for restaurant in restaurants | batch(5, '&nbsp;') %}
-                <td>
-                    {% for i in restaurant %}    
-                        {% if (i["business_status"] == "OPERATIONAL") and (i["opening_hours"] == true) %}
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ i["name"] }}</h5>
-                                    <a href="https://www.google.com/maps/search/{{ i['name'] }}" class="card-link">{{ i["formatted_address"] }}</a>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ i["price_level"] }}</li>
-                                    <li class="list-group-item"><strong>Rating:</strong> {{ i["rating"] }} ⭐ | {{ i["user_ratings_total"] }} reviews</li>
-                                </ul>
-                            </div>
-                            <br>
-                        {% endif %}
+            {% for i in range(5) %}
+                <tr>
+                    {% for j in range(4) %}
+                        <td>
+                                {% set k = counter|length %}
+                                {% if (restaurants[k]["business_status"] == "OPERATIONAL") and (restaurants[k]["opening_hours"] == true) %}
+                                    <div class="card bg-primary text-white" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ restaurants[k]["name"] }}</h5>
+                                            <a href="https://www.google.com/maps/search/%7B%7B restaurants[k]['name'] }}" class="card-link">{{ restaurants[k]["formatted_address"] }}</a>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurants[k]["price_level"] }}</li>
+                                            <li class="list-group-item"><strong>Rating:</strong> {{ restaurants[k]["rating"] }} ⭐ | {{ restaurants[k]["user_ratings_total"] }} reviews</li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                {% endif %}
+                                <!-- {{ counter.append(0) }} -->
+                        </td>
                     {% endfor %}
-                </td>
-                {% endfor %}
-            </tr>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
 {% endblock %}
-
-
