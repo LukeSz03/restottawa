@@ -12,6 +12,15 @@
     text-align: center;
 }
 
+#restaurant {
+    position: relative;
+    top: 90%;
+    padding-top: 5%;
+    text-align: center;
+    padding-bottom: 5%;
+
+}
+
 #welcome {
     animation: fadeInAnimation ease 4s;
     animation-iteration-count: 1;
@@ -49,5 +58,3 @@ a:visited {
 #note-heading {
     font-size: 20px;
 }
-
-
