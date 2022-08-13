@@ -1,9 +1,16 @@
 from flask import Flask, render_template, redirect, url_for
 from forms import TypeForm, FastFoodForm, RestaurantForm
 from search_api import search
+import os
+
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
 
 app = Flask(__name__)
-app.secret_key = "secret_key"
+app.secret_key = os.environ.get("SECRET_KEY")
 
 
 @app.route("/")
