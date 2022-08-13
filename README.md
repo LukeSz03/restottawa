@@ -8,11 +8,7 @@ Utilizes Google Maps' [Places API](https://developers.google.com/maps/documentat
 
 _NOTE:_ Despite the title, this web app can be used anywhere in the world provided you have access to an internet connnection.
 
-
-
-https://user-images.githubusercontent.com/107209941/184470425-8e34e100-d05c-4798-bf5a-046d5aabbce1.mov
-
-
+https://user-images.githubusercontent.com/107209941/184470648-3cfbae35-3ec6-40b9-8397-84da9806e49f.mp4
 
 ## Setup
 
