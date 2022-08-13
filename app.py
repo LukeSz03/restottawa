@@ -82,9 +82,7 @@ def fast_food():
             restaurants = search("Burger King")
         elif form.aw.data:
             restaurants = search("AWCanada")
-        return render_template(
-            "results.html", filter_form=filter_form, restaurants=restaurants
-        )
+        return render_template("results.html", restaurants=restaurants)
 
     return render_template("fast_food.html", form=form)
 
