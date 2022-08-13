@@ -1,5 +1,9 @@
 # restottawa
 
+### Shout out
+
+Shout out to Luke Schultz for helping me bring this project to life! In particular,  Luke devised our initial method to display 4 search results per row (see commit `c7b5c990ff7fb500d34a7094dcba74286a2e642c`) which fixed our biggest design issue. It was a pleasure working with you!
+
 ## Description
 
 A web app for finding nearby restaurants that you may like.
