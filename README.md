@@ -32,13 +32,14 @@ pip install -r requirements.txt
 touch .env
 ```
 
-5. Add the following line in the .env file and paste your Google Maps Place's API key
+5. Add the following lines in the .env file and insert your keys.
 
 ```
 API_KEY=your_key_goes_here
+SECRET_KEY=your_key_goes_here
 ```
 
-6. Run the web app
+7. Run the web app
 
 ```sh
 python app.py
