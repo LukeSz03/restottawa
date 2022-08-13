@@ -6,6 +6,8 @@ A web app for finding nearby restaurants that you may like.
 
 Utilizes Google Maps' [Places API](https://developers.google.com/maps/documentation/places/web-service) for finding the restaurants and fast food joints.
 
+_NOTE:_ Despite the title, this web app can be used anywhere in the world provided you have access to an internet connnection.
+
 ![](home-page.png)
 
 ## Setup
