@@ -24,15 +24,15 @@ def type():
 
     if form.validate_on_submit():
         if form.restaurant.data:
-            return redirect(url_for("rest"))
+            return redirect(url_for("restaurants"))
         elif form.fast_food.data:
-            return redirect(url_for("fast_food"))
+            return redirect(url_for("fast_foods"))
 
     return render_template("type.html", form=form)
 
 
-@app.route("/restaurant", methods=["GET", "POST"])
-def rest():
+@app.route("/restaurants", methods=["GET", "POST"])
+def restaurants():
     form = RestaurantForm()
 
     if form.validate_on_submit():
@@ -64,11 +64,11 @@ def rest():
             restaurants = search("vietnameserestaurants")
         return render_template("results.html", restaurants=restaurants)
 
-    return render_template("restaurant.html", form=form)
+    return render_template("restaurants.html", form=form)
 
 
-@app.route("/fast_food", methods=["GET", "POST"])
-def fast_food():
+@app.route("/fast_foods", methods=["GET", "POST"])
+def fast_foods():
     form = FastFoodForm()
 
     if form.validate_on_submit():
@@ -84,7 +84,7 @@ def fast_food():
             restaurants = search("AWCanada")
         return render_template("results.html", restaurants=restaurants)
 
-    return render_template("fast_food.html", form=form)
+    return render_template("fast_foods.html", form=form)
 
 
 if __name__ == "__main__":
