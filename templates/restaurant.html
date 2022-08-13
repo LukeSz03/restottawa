@@ -3,8 +3,9 @@
 {%block title %}Restaurant{% endblock %}
 
 {% block content %}
-<div class="container" id="restaurant">
+<div class="container" id="restaurant_page">
     <h1>What type of cuisine would you like to eat?</h1>
+
     <div class="container">
         <form method="post">
             {{ form.hidden_tag() }}
@@ -87,4 +88,6 @@
         </form>
     </div>
 </div>
+
+
 {% endblock %}
