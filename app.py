@@ -69,9 +69,7 @@ def rest():
 
 @app.route("/fast_food", methods=["GET", "POST"])
 def fast_food():
-
     form = FastFoodForm()
-    filter_form = FilterRestaurantForm()
 
     if form.validate_on_submit():
         if form.mcdonalds.data:
