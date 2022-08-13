@@ -1,36 +1,206 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{% set counter = [] %}
-<h1 style="text-align: center">Restaurants currently <span style="color: rgb(99, 229, 99)">opened</span></h1>
+<h1 style="text-align: center">Restaurants found</h1>
 <br>
 <div class="container">
     <table class="table table-borderless">
-
         <tbody>
-            {% for i in range(5) %}
-                <tr>
-                    {% for j in range(4) %}
-                        <td>
-                                {% set k = counter|length %}
-                                {% if (restaurants[k]["business_status"] == "OPERATIONAL") and (restaurants[k]["opening_hours"] == true) %}
-                                    <div class="card bg-primary text-white" style="width: 18rem;">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ restaurants[k]["name"] }}</h5>
-                                            <a href="https://www.google.com/maps/search/%7B%7B restaurants[k]['name'] }}" class="card-link">{{ restaurants[k]["formatted_address"] }}</a>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurants[k]["price_level"] }}</li>
-                                            <li class="list-group-item"><strong>Rating:</strong> {{ restaurants[k]["rating"] }} ⭐ | {{ restaurants[k]["user_ratings_total"] }} reviews</li>
-                                        </ul>
-                                    </div>
-                                    <br>
-                                {% endif %}
-                                <!-- {{ counter.append(0) }} -->
-                        </td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
+            <tr>
+                {% for restaurant in restaurants[0:4] %}
+                    <td> 
+                        {% if (restaurant["opening_hours"] == true) %}
+                            <div class="card bg-success text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    <li class="list-group-item"><strong>Open/Closed:</strong> OPEN</li>
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% else %}
+                            <div class="card bg-danger text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    {% if (restaurant["opening_hours"] == false) %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> CLOSED</li>
+                                    {% else %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> {{ restaurant["opening_hours"] }}</li>
+                                    {% endif %}
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for restaurant in restaurants[4:8] %} 
+                    <td> 
+                        {% if (restaurant["opening_hours"] == true) %}
+                            <div class="card bg-success text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    <li class="list-group-item"><strong>Open/Closed:</strong> OPEN</li>
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% else %}
+                            <div class="card bg-danger text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    {% if (restaurant["opening_hours"] == false) %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> CLOSED</li>
+                                    {% else %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> {{ restaurant["opening_hours"] }}</li>
+                                    {% endif %}
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for restaurant in restaurants[8:12] %} 
+                    <td> 
+                        {% if (restaurant["opening_hours"] == true) %}
+                            <div class="card bg-success text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    <li class="list-group-item"><strong>Open/Closed:</strong> OPEN</li>
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% else %}
+                            <div class="card bg-danger text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    {% if (restaurant["opening_hours"] == false) %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> CLOSED</li>
+                                    {% else %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> {{ restaurant["opening_hours"] }}</li>
+                                    {% endif %}
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for restaurant in restaurants[12:16] %} 
+                    <td> 
+                        {% if (restaurant["opening_hours"] == true) %}
+                            <div class="card bg-success text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    <li class="list-group-item"><strong>Open/Closed:</strong> OPEN</li>
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% else %}
+                            <div class="card bg-danger text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    {% if (restaurant["opening_hours"] == false) %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> CLOSED</li>
+                                    {% else %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> {{ restaurant["opening_hours"] }}</li>
+                                    {% endif %}
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for restaurant in restaurants[16:20] %}
+                    <td> 
+                        {% if (restaurant["opening_hours"] == true) %}
+                            <div class="card bg-success text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    <li class="list-group-item"><strong>Open/Closed:</strong> OPEN</li>
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% else %}
+                            <div class="card bg-danger text-white" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ restaurant["name"] }}</h5>
+                                    <a href="https://www.google.com/maps/search/{{ restaurant['name'] }}" class="card-link">{{ restaurant["formatted_address"] }}</a>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>In operation:</strong> {{ restaurant["business_status"] }}</li>
+                                    {% if (restaurant["opening_hours"] == false) %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> CLOSED</li>
+                                    {% else %}
+                                        <li class="list-group-item"><strong>Open/Closed:</strong> {{ restaurant["opening_hours"] }}</li>
+                                    {% endif %}
+                                    <li class="list-group-item"><strong>Pricepoint:</strong> {{ restaurant["price_level"] }}</li>
+                                    <li class="list-group-item"><strong>Rating:</strong> {{ restaurant["rating"] }} ⭐ | {{ restaurant["user_ratings_total"] }} reviews</li>
+                                </ul>
+                            </div>
+                            <br>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
         </tbody>
     </table>
 </div>

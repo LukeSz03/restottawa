@@ -37,7 +37,6 @@ def rest():
             restaurants = search("hamburgerrestaurants")
         elif form.indian.data:
             restaurants = search("indianrestaurants")
-            print(restaurants)
         elif form.italian.data:
             restaurants = search("italianrestaurants")
         elif form.japanese.data:
@@ -65,6 +64,7 @@ def rest():
 def fast_food():
 
     form = FastFoodForm()
+    filter_form = FilterRestaurantForm()
 
     if form.validate_on_submit():
         if form.mcdonalds.data:
@@ -77,7 +77,9 @@ def fast_food():
             restaurants = search("Burger King")
         elif form.aw.data:
             restaurants = search("AWCanada")
-        return render_template("results.html", restaurants=restaurants)
+        return render_template(
+            "results.html", filter_form=filter_form, restaurants=restaurants
+        )
 
     return render_template("fast_food.html", form=form)
 
